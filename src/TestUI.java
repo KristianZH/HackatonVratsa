@@ -4,6 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Timer;
@@ -163,6 +167,7 @@ public class TestUI extends JFrame {
 				btnNewButton_9.setText(String.valueOf(life));
 				if(life <= 0){
 					points+=clicks;
+					MainMenu.saveData();
 					life = 20;
 					JOptionPane.showMessageDialog(getContentPane(), "Game Over!");
 					//System.exit(0);
@@ -209,6 +214,15 @@ public class TestUI extends JFrame {
 			return btnNewButton_8;
 		default:
 			return btnNewButton;
+		}
+	}
+	
+	private  void saveObject(){
+		try(ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("play")))){
+			oos.writeObject(this);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }

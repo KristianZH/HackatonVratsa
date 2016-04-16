@@ -1,10 +1,21 @@
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
-public class Shop extends JFrame {
+public class Shop extends JFrame  {
 	private JButton use1;
 	private JButton use2;
 	private JButton use3;
@@ -13,9 +24,17 @@ public class Shop extends JFrame {
 	private JButton buy2;
 	private JButton buy3;
 	private JButton buy4;
+	static String b1IsBought="false";
+    static String b2IsBought="false";
+	static String b3IsBought="false";
+	static String b4IsBought="false";
 
 	static int life;
 
+	
+	
+	
+	
 	private void checkPrice(JLabel points) {
 		if (Integer.valueOf(points.getText()) < 100) {
 			buy1.setEnabled(false);
@@ -30,13 +49,17 @@ public class Shop extends JFrame {
 			buy4.setEnabled(false);
 		}
 	}
+	
+	
 
 	public Shop() {
-		JLabel points = new JLabel();
+		
+		JLabel points = new JLabel("0");
 		points.setBounds(47, 580, 46, 14);
-		points.setText(String.valueOf(Integer.valueOf(points.getText()
-				+ TestUI.points+500)));
+		points.setText(String.valueOf(Integer.valueOf(Integer.valueOf(points.getText())
+				+ Integer.valueOf(TestUI.points))));
 		getContentPane().add(points);
+		
 
 		this.setSize(900, 700);
 		this.setLocationRelativeTo(null);
@@ -76,6 +99,7 @@ public class Shop extends JFrame {
 		if (Integer.valueOf(points.getText()) < 100) {
 			buy1.setEnabled(false);
 		}
+		
 		buy1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				use1.setVisible(true);
@@ -83,6 +107,8 @@ public class Shop extends JFrame {
 				points.setText(String.valueOf(Integer.valueOf(points.getText()) - 100));
 				buy1.setEnabled(false);
 				checkPrice(points);
+				b1IsBought="true";
+				MainMenu.saveData();
 				
 			}
 
@@ -102,7 +128,8 @@ public class Shop extends JFrame {
 				points.setText(String.valueOf(Integer.valueOf(points.getText()) - 250));
 				buy2.setEnabled(false);
 				checkPrice(points);
-				
+				b2IsBought="true";
+				MainMenu.saveData();
 			}
 		});
 		buy2.setBounds(339, 224, 129, 36);
@@ -120,6 +147,8 @@ public class Shop extends JFrame {
 				TestUI.points = Integer.valueOf(points.getText()) - 500;
 				buy3.setEnabled(false);
 				checkPrice(points);
+				b3IsBought="true";
+				MainMenu.saveData();
 			}
 
 		});
@@ -137,6 +166,8 @@ public class Shop extends JFrame {
 				TestUI.points = Integer.valueOf(points.getText()) - 1000;
 				buy4.setEnabled(false);
 				checkPrice(points);
+				b4IsBought="true";
+				MainMenu.saveData();
 			}
 		});
 		buy4.setBounds(339, 488, 129, 36);
@@ -210,6 +241,36 @@ public class Shop extends JFrame {
 
 		this.setVisible(false);
 
+		if(Shop.b1IsBought.equals("true")){
+			use1.setVisible(true);
+			buy1.setEnabled(false);
+			checkPrice(points);
+			b1IsBought="true";
+			
+		}
+		if(Shop.b2IsBought.equals("true")){
+			use2.setVisible(true);
+			buy2.setEnabled(false);
+			checkPrice(points);
+			b2IsBought="true";
+			
+		}
+		if(Shop.b3IsBought.equals("true")){
+			use3.setVisible(true);
+			buy3.setEnabled(false);
+			checkPrice(points);
+			b3IsBought="true";
+			
+		}
+		if(Shop.b4IsBought.equals("true")){
+			use4.setVisible(true);
+			buy4.setEnabled(false);
+			checkPrice(points);
+			b4IsBought="true";
+			
+		}
+		
 	}
+	
 
 }
