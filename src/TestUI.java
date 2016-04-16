@@ -31,96 +31,16 @@ public class TestUI extends JFrame {
 	private JLabel label;
 	private ArrayList<JButton> holes = new ArrayList<JButton>();
 	private int move = 2;
-	private int clicks = 1;
-	private JButton btnNewButton_9;
-	private int life = 50;
+	private int  clicks = 0;
+	public static int points = 0;
+	public static  JButton btnNewButton_9;
+	public static  int  life;
 	private Random rand = new Random();
 
 	public TestUI() {
 		getContentPane().setLayout(null);
 		this.setSize(900, 700);
 		this.setLocationRelativeTo(null);
-
-//		btnNewButton = new JButton("0");
-//		btnNewButton.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				btnNewButton.setText("0");
-//			}
-//		});
-//		btnNewButton.setBounds(32, 91, 89, 23);
-//		getContentPane().add(btnNewButton);
-//
-//		btnNewButton_1 = new JButton("0");
-//		btnNewButton_1.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				btnNewButton_1.setText("0");
-//			}
-//		});
-//		btnNewButton_1.setBounds(177, 91, 89, 23);
-//		getContentPane().add(btnNewButton_1);
-//
-//		btnNewButton_2 = new JButton("0");
-//		btnNewButton_2.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				btnNewButton_2.setText("0");
-//			}
-//		});
-//		btnNewButton_2.setBounds(316, 91, 89, 23);
-//		getContentPane().add(btnNewButton_2);
-//
-//		btnNewButton_3 = new JButton("0");
-//		btnNewButton_3.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				btnNewButton_3.setText("0");
-//			}
-//		});
-//		btnNewButton_3.setBounds(32, 142, 89, 23);
-//		getContentPane().add(btnNewButton_3);
-//
-//		btnNewButton_4 = new JButton("0");
-//		btnNewButton_4.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				btnNewButton_4.setText("0");
-//			}
-//		});
-//		btnNewButton_4.setBounds(177, 142, 89, 23);
-//		getContentPane().add(btnNewButton_4);
-//
-//		btnNewButton_5 = new JButton("0");
-//		btnNewButton_5.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				btnNewButton_5.setText("0");
-//			}
-//		});
-//		btnNewButton_5.setBounds(316, 142, 89, 23);
-//		getContentPane().add(btnNewButton_5);
-//
-//		btnNewButton_6 = new JButton("0");
-//		btnNewButton_6.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent arg0) {
-//				btnNewButton_6.setText("0");
-//			}
-//		});
-//		btnNewButton_6.setBounds(32, 189, 89, 23);
-//		getContentPane().add(btnNewButton_6);
-//
-//		btnNewButton_7 = new JButton("0");
-//		btnNewButton_7.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				btnNewButton_7.setText("0");
-//			}
-//		});
-//		btnNewButton_7.setBounds(177, 189, 89, 23);
-//		getContentPane().add(btnNewButton_7);
-//
-//		btnNewButton_8 = new JButton("0");
-//		btnNewButton_8.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				btnNewButton_8.setText("0");
-//			}
-//		});
-//		btnNewButton_8.setBounds(316, 189, 89, 23);
-//		getContentPane().add(btnNewButton_8);
 		
 		label = new JLabel("0");
 		label.setBounds(68, 423, 46, 14);
@@ -185,7 +105,7 @@ public class TestUI extends JFrame {
 		lblScore.setBounds(21, 423, 37, 14);
 		getContentPane().add(lblScore);
 		
-		btnNewButton_9 = new JButton("50");
+		btnNewButton_9 = new JButton("");
 		btnNewButton_9.setBounds(128, 445, 543, 179);
 		getContentPane().add(btnNewButton_9);
 		this.setVisible(false);
@@ -203,64 +123,15 @@ public class TestUI extends JFrame {
 					flag = true;
 				}
 			}
-			//btn.setBounds(new Random().nextInt(300) + 100, 11, btn.getWidth(), btn.getHeight());
 		}
 	}
 
 	public void play() {
-//		Timer timer = new Timer();
-//		timer.schedule(new TimerTask() {
-//			@Override
-//			public void run() {
-//				Random rand = new Random();
-//				int a = rand.nextInt(9);
-//				if(getButton(a).getText().equals("1")){
-//					a = rand.nextInt(9);
-//				}
-//				getButton(a).setText("1");
-//			}
-//		}, 2000, 1000);
-		
-//		Timer generateHoles = new Timer();
-//		generateHoles.schedule(new TimerTask(){
-//			@Override
-//			public void run(){
-//				holes.add(new JButton());
-//				getContentPane().add(holes.get(holes.size() - 1));
-//				holes.get(holes.size() - 1).setLocation(new Random().nextInt(450), 11);
-//				holes.get(holes.size() - 1).addActionListener(new ActionListener() {
-//					
-//					@Override
-//					public void actionPerformed(ActionEvent e) {
-//						getContentPane().remove(btnTest);
-//					}
-//				});
-//				Timer movingHoles = new Timer();
-//				movingHoles.schedule(new TimerTask(){
-//					@Override
-//					public void run(){
-//						Rectangle r = holes.get(holes.size() - 1).getBounds();
-//						r.width = 43;
-//						r.height = 39;
-//						r.setLocation((int)r.getX(), (int)r.getY() + 2);
-//						holes.get(holes.size() - 1).setBounds(r);
-//					}
-//				}, 1000, 10);
-//				
-//			}
-//		}, 1000, 1000);
 		
 		Timer movingHoles = new Timer();
 		movingHoles.schedule(new TimerTask(){
 			@Override
 			public void run(){
-//				if(clicks % 10 == 0){
-//					move++;
-//					clicks = 1;
-				
-				//push
-				//push2
-//				}
 				Rectangle r = btnTest.getBounds();
 				Rectangle r2 = btnTest2.getBounds();
 				Rectangle r3 = btnTest3.getBounds();
@@ -291,6 +162,8 @@ public class TestUI extends JFrame {
 				}
 				btnNewButton_9.setText(String.valueOf(life));
 				if(life <= 0){
+					points+=clicks;
+					life = 20;
 					JOptionPane.showMessageDialog(getContentPane(), "Game Over!");
 					//System.exit(0);
 					this.cancel();
@@ -308,6 +181,10 @@ public class TestUI extends JFrame {
 			}
 		}, 1000, 10000);
 		
+	}
+	
+	public int getLife(){
+		return this.life;
 	}
 
 	private JButton getButton(int a) {

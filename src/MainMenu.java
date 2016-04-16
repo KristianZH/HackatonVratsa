@@ -18,6 +18,7 @@ public class MainMenu extends JFrame{
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				playGame = new TestUI();
+				TestUI.life = 50 + Shop.life;
 				setVisible(false);
 				playGame.setVisible(true);
 				playGame.play();
