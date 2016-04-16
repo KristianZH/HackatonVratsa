@@ -188,6 +188,7 @@ public class TestUI extends JFrame {
 		btnNewButton_9 = new JButton("50");
 		btnNewButton_9.setBounds(128, 445, 543, 179);
 		getContentPane().add(btnNewButton_9);
+		this.setVisible(false);
 		
 		
 	}
@@ -291,7 +292,10 @@ public class TestUI extends JFrame {
 				btnNewButton_9.setText(String.valueOf(life));
 				if(life <= 0){
 					JOptionPane.showMessageDialog(getContentPane(), "Game Over!");
-					System.exit(0);
+					//System.exit(0);
+					this.cancel();
+					setVisible(false);
+					Test.main(null);
 				}
 			}
 		}, 1000, 30);
