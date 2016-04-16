@@ -30,13 +30,15 @@ public class TestUI extends JFrame {
 	private JButton btnTest3;
 	private JLabel label;
 	private ArrayList<JButton> holes = new ArrayList<JButton>();
-	private int move = 1;
+	private int move = 2;
 	private int clicks = 1;
 	private JButton btnNewButton_9;
+	private int life = 50;
+	private Random rand = new Random();
 
 	public TestUI() {
 		getContentPane().setLayout(null);
-		this.setSize(900, 900);
+		this.setSize(900, 700);
 		this.setLocationRelativeTo(null);
 
 //		btnNewButton = new JButton("0");
@@ -125,13 +127,13 @@ public class TestUI extends JFrame {
 		getContentPane().add(label);
 		
 		btnTest = new JButton("test");
-		btnTest.setBounds(new Random().nextInt(700) + 100, 11, 43, 39);
+		btnTest.setBounds(rand.nextInt(317) + 128, 11, 43, 39);
 		//makeNewDirection(btnTest);
 		btnTest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				btnTest.setBounds(new Random().nextInt(700) + 100, 11, btnTest.getWidth(), btnTest.getHeight());
+				btnTest.setBounds(rand.nextInt(317) + 128, 11, btnTest.getWidth(), btnTest.getHeight());
 				while(btnTest.getBounds().intersects(btnTest2.getBounds()) || btnTest.getBounds().intersects(btnTest3.getBounds())){
-					btnTest.setBounds(new Random().nextInt(700) + 100, 11, btnTest.getWidth(), btnTest.getHeight());
+					btnTest.setBounds(rand.nextInt(317) + 128, 11, btnTest.getWidth(), btnTest.getHeight());
 				}
 				//makeNewDirection(btnTest, btnTest2, btnTest3);
 				clicks++;
@@ -140,16 +142,16 @@ public class TestUI extends JFrame {
 			}
 		});
 		btnTest3 = new JButton("test");
-		btnTest3.setBounds(new Random().nextInt(700) + 100, 11, 43, 39);
+		btnTest3.setBounds(rand.nextInt(317) + 128, 11, 43, 39);
 		while(btnTest3.getBounds().intersects(btnTest.getBounds())){
-			btnTest3.setBounds(new Random().nextInt(700) + 100, 11, btnTest3.getWidth(), btnTest3.getHeight());
+			btnTest3.setBounds(rand.nextInt(317) + 128, 11, btnTest3.getWidth(), btnTest3.getHeight());
 		}
 		//makeNewDirection(btnTest3, btnTest);
 		btnTest3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				btnTest3.setBounds(new Random().nextInt(700) + 100, 11, btnTest3.getWidth(), btnTest3.getHeight());
+				btnTest3.setBounds(rand.nextInt(317) + 128, 11, btnTest3.getWidth(), btnTest3.getHeight());
 				while(btnTest3.getBounds().intersects(btnTest2.getBounds()) || btnTest3.getBounds().intersects(btnTest.getBounds())){
-					btnTest3.setBounds(new Random().nextInt(700) + 100, 11, btnTest3.getWidth(), btnTest3.getHeight());
+					btnTest3.setBounds(rand.nextInt(317) + 128, 11, btnTest3.getWidth(), btnTest3.getHeight());
 				}
 				//makeNewDirection(btnTest3, btnTest, btnTest2);
 				clicks++;
@@ -158,16 +160,16 @@ public class TestUI extends JFrame {
 			}
 		});
 		btnTest2 = new JButton("test");
-		btnTest2.setBounds(new Random().nextInt(700) + 100, 11, 43, 39);
+		btnTest2.setBounds(rand.nextInt(317) + 128, 11, 43, 39);
 		while(btnTest2.getBounds().intersects(btnTest3.getBounds()) || btnTest2.getBounds().intersects(btnTest.getBounds())){
-			btnTest2.setBounds(new Random().nextInt(700) + 100, 11, btnTest2.getWidth(), btnTest2.getHeight());
+			btnTest2.setBounds(rand.nextInt(317) + 128, 11, btnTest2.getWidth(), btnTest2.getHeight());
 		}
 		//makeNewDirection(btnTest2, btnTest, btnTest3);
 		btnTest2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				btnTest2.setBounds(new Random().nextInt(700) + 100, 11, btnTest2.getWidth(), btnTest2.getHeight());
+				btnTest2.setBounds(rand.nextInt(317) + 128, 11, btnTest2.getWidth(), btnTest2.getHeight());
 				while(btnTest2.getBounds().intersects(btnTest3.getBounds()) || btnTest2.getBounds().intersects(btnTest.getBounds())){
-					btnTest2.setBounds(new Random().nextInt(700) + 100, 11, btnTest2.getWidth(), btnTest2.getHeight());
+					btnTest2.setBounds(rand.nextInt(317) + 128, 11, btnTest2.getWidth(), btnTest2.getHeight());
 				}
 				//makeNewDirection(btnTest2, btnTest, btnTest3);
 				clicks++;
@@ -183,8 +185,8 @@ public class TestUI extends JFrame {
 		lblScore.setBounds(21, 423, 37, 14);
 		getContentPane().add(lblScore);
 		
-		btnNewButton_9 = new JButton("New button");
-		btnNewButton_9.setBounds(135, 620, 543, 179);
+		btnNewButton_9 = new JButton("50");
+		btnNewButton_9.setBounds(128, 445, 543, 179);
 		getContentPane().add(btnNewButton_9);
 		
 		
@@ -194,7 +196,7 @@ public class TestUI extends JFrame {
 		boolean flag = true;
 		while(flag){
 			flag = false;
-			btn.setBounds(new Random().nextInt(300) + 100, 11, btn.getWidth(), btn.getHeight());
+			btn.setBounds(new Random().nextInt(317) + 128, 11, btn.getWidth(), btn.getHeight());
 			for(JButton b : buttons){
 				if(btn.getBounds().intersects(b.getBounds())){
 					flag = true;
@@ -267,9 +269,27 @@ public class TestUI extends JFrame {
 				btnTest.setBounds(r);
 				btnTest2.setBounds(r2);
 				btnTest3.setBounds(r3);
-				if(btnTest.getBounds().intersects(btnNewButton_9.getBounds())
-						|| btnTest2.getBounds().intersects(btnNewButton_9.getBounds()) 
-						|| btnTest3.getBounds().intersects(btnNewButton_9.getBounds())){
+				if(btnTest.getBounds().intersects(btnNewButton_9.getBounds())){
+					life -= 10;
+					btnTest.setBounds(rand.nextInt(317) + 128, 11, btnTest.getWidth(), btnTest.getHeight());
+					while(btnTest.getBounds().intersects(btnTest2.getBounds()) || btnTest.getBounds().intersects(btnTest3.getBounds())){
+						btnTest.setBounds(rand.nextInt(317) + 128, 11, btnTest.getWidth(), btnTest.getHeight());
+					}
+				} else if(btnTest2.getBounds().intersects(btnNewButton_9.getBounds())){
+					life -= 10;
+					btnTest2.setBounds(rand.nextInt(317) + 128, 11, btnTest2.getWidth(), btnTest2.getHeight());
+					while(btnTest2.getBounds().intersects(btnTest3.getBounds()) || btnTest2.getBounds().intersects(btnTest.getBounds())){
+						btnTest2.setBounds(rand.nextInt(317) + 128, 11, btnTest2.getWidth(), btnTest2.getHeight());
+					}
+				} else if(btnTest3.getBounds().intersects(btnNewButton_9.getBounds())){
+					life -= 10;
+					btnTest3.setBounds(rand.nextInt(317) + 128, 11, btnTest3.getWidth(), btnTest3.getHeight());
+					while(btnTest3.getBounds().intersects(btnTest2.getBounds()) || btnTest3.getBounds().intersects(btnTest.getBounds())){
+						btnTest3.setBounds(rand.nextInt(317) + 128, 11, btnTest3.getWidth(), btnTest3.getHeight());
+					}
+				}
+				btnNewButton_9.setText(String.valueOf(life));
+				if(life <= 0){
 					JOptionPane.showMessageDialog(getContentPane(), "Game Over!");
 					System.exit(0);
 				}
@@ -282,7 +302,7 @@ public class TestUI extends JFrame {
 			public void run(){
 				move++;
 			}
-		}, 1000, 5000);
+		}, 1000, 10000);
 		
 	}
 
