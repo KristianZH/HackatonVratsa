@@ -256,6 +256,7 @@ public class TestUI extends JFrame {
 //					clicks = 1;
 				
 				//push
+				//push2
 //				}
 				Rectangle r = btnTest.getBounds();
 				Rectangle r2 = btnTest2.getBounds();
