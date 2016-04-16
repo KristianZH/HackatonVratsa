@@ -1,3 +1,4 @@
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 
@@ -9,6 +10,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+import java.awt.Color;
+import javax.swing.JLabel;
 
 
 public class MainMenu extends JFrame{
@@ -17,8 +20,10 @@ public class MainMenu extends JFrame{
 	Shop shop;
 	
 	public MainMenu() {
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		readData();
+	
 		this.playGame = new TestUI();
 		this.shop = new Shop();
 		getContentPane().setLayout(null);
@@ -32,7 +37,7 @@ public class MainMenu extends JFrame{
 				playGame.play();
 			}
 		});
-		btnNewButton.setBounds(279, 147, 200, 55);
+		btnNewButton.setBounds(130, 175, 200, 55);
 		getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Shop");
@@ -42,7 +47,7 @@ public class MainMenu extends JFrame{
 				shop.setVisible(true);
 			}
 		});
-		btnNewButton_1.setBounds(279, 236, 200, 55);
+		btnNewButton_1.setBounds(130, 286, 200, 55);
 		getContentPane().add(btnNewButton_1);
 		
 		JButton btnExit = new JButton("Exit");
@@ -51,9 +56,14 @@ public class MainMenu extends JFrame{
 				System.exit(0);
 			}
 		});
-		btnExit.setBounds(279, 328, 200, 55);
+		btnExit.setBounds(130, 391, 200, 55);
 		getContentPane().add(btnExit);
-		this.setSize(900, 700);
+		
+		JLabel lblNewLabel = new JLabel();
+		lblNewLabel.setBounds(0, 0, 529, 502);
+		lblNewLabel.setIcon(new ImageIcon("pictures\\main menu.png"));
+		getContentPane().add(lblNewLabel);
+		this.setSize(545, 541);
 		this.setLocationRelativeTo(null);
 		
 		this.setVisible(true);

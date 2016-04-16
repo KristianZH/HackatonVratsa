@@ -13,6 +13,7 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,20 +21,10 @@ import javax.swing.JOptionPane;
 
 public class TestUI extends JFrame {
 
-	private JButton btnNewButton;
-	private JButton btnNewButton_1;
-	private JButton btnNewButton_2;
-	private JButton btnNewButton_3;
-	private JButton btnNewButton_4;
-	private JButton btnNewButton_5;
-	private JButton btnNewButton_6;
-	private JButton btnNewButton_7;
-	private JButton btnNewButton_8;
 	private JButton btnTest;
 	private JButton btnTest2;
 	private JButton btnTest3;
 	private JLabel label;
-	private ArrayList<JButton> holes = new ArrayList<JButton>();
 	private int move = 2;
 	private int  clicks = 0;
 	public static int points = 0;
@@ -50,8 +41,12 @@ public class TestUI extends JFrame {
 		label.setBounds(68, 423, 46, 14);
 		getContentPane().add(label);
 		
-		btnTest = new JButton("test");
-		btnTest.setBounds(rand.nextInt(317) + 128, 11, 43, 39);
+		btnTest = new JButton();
+		btnTest.setIcon(new ImageIcon("pictures\\hole.png"));
+		btnTest.setBounds(249, 55, 78, 62);
+		btnTest.setOpaque(false);
+		btnTest.setContentAreaFilled(false);
+		btnTest.setBorderPainted(false);
 		//makeNewDirection(btnTest);
 		btnTest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -63,10 +58,14 @@ public class TestUI extends JFrame {
 				clicks++;
 				label.setText(String.valueOf(clicks));
 				//getContentPane().remove(btnTest);
+				
 			}
 		});
 		btnTest3 = new JButton("test");
-		btnTest3.setBounds(rand.nextInt(317) + 128, 11, 43, 39);
+		btnTest3.setBounds(169, 55, 78, 62);
+		btnTest3.setOpaque(false);
+		btnTest3.setContentAreaFilled(false);
+		btnTest3.setBorderPainted(false);
 		while(btnTest3.getBounds().intersects(btnTest.getBounds())){
 			btnTest3.setBounds(rand.nextInt(317) + 128, 11, btnTest3.getWidth(), btnTest3.getHeight());
 		}
@@ -84,7 +83,10 @@ public class TestUI extends JFrame {
 			}
 		});
 		btnTest2 = new JButton("test");
-		btnTest2.setBounds(rand.nextInt(317) + 128, 11, 43, 39);
+		btnTest2.setBounds(90, 55, 78, 62);
+		btnTest2.setOpaque(false);
+		btnTest2.setContentAreaFilled(false);
+		btnTest2.setBorderPainted(false);
 		while(btnTest2.getBounds().intersects(btnTest3.getBounds()) || btnTest2.getBounds().intersects(btnTest.getBounds())){
 			btnTest2.setBounds(rand.nextInt(317) + 128, 11, btnTest2.getWidth(), btnTest2.getHeight());
 		}
@@ -186,43 +188,5 @@ public class TestUI extends JFrame {
 			}
 		}, 1000, 10000);
 		
-	}
-	
-	public int getLife(){
-		return this.life;
-	}
-
-	private JButton getButton(int a) {
-		switch (a) {
-		case 0:
-			return btnNewButton;
-		case 1:
-			return btnNewButton_1;
-		case 2:
-			return btnNewButton_2;
-		case 3:
-			return btnNewButton_3;
-		case 4:
-			return btnNewButton_4;
-		case 5:
-			return btnNewButton_5;
-		case 6:
-			return btnNewButton_6;
-		case 7:
-			return btnNewButton_7;
-		case 8:
-			return btnNewButton_8;
-		default:
-			return btnNewButton;
-		}
-	}
-	
-	private  void saveObject(){
-		try(ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("play")))){
-			oos.writeObject(this);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 }

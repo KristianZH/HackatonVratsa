@@ -1,19 +1,11 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JButton;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.awt.Color;
 
 public class Shop extends JFrame  {
 	private JButton use1;
@@ -53,9 +45,11 @@ public class Shop extends JFrame  {
 	
 
 	public Shop() {
+		getContentPane().setBackground(Color.WHITE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel points = new JLabel("0");
-		points.setBounds(47, 580, 46, 14);
+		points.setBounds(105, 588, 46, 14);
 		points.setText(String.valueOf(Integer.valueOf(Integer.valueOf(points.getText())
 				+ Integer.valueOf(TestUI.points))));
 		getContentPane().add(points);
@@ -269,6 +263,23 @@ public class Shop extends JFrame  {
 			b4IsBought="true";
 			
 		}
+		
+		JLabel lblCoins = new JLabel("New label");
+		lblCoins.setBounds(31, 576, 46, 39);
+		getContentPane().add(lblCoins);
+		
+		JLabel lblbackground = new JLabel("New label");
+		lblbackground.setBounds(0, 0, 884, 661);
+		getContentPane().add(lblbackground);
+		
+		car1.setIcon(new ImageIcon("pictures\\lambo.png"));
+		car2.setIcon(new ImageIcon("pictures\\lambo2.png"));
+		car3.setIcon(new ImageIcon("pictures\\merc.png"));
+		car4.setIcon(new ImageIcon("pictures\\viper.png"));
+		lblCoins.setIcon(new ImageIcon("pictures\\coins.jpg"));
+		lblbackground.setIcon(new ImageIcon("pictures\\garage.jpg"));
+		
+		
 		
 	}
 	
