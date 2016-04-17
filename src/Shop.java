@@ -20,6 +20,9 @@ public class Shop extends JFrame  {
     static String b2IsBought="false";
 	static String b3IsBought="false";
 	static String b4IsBought="false";
+	static int flag1=0;
+
+	
 
 	static int life;
 
@@ -137,8 +140,8 @@ public class Shop extends JFrame  {
 			public void actionPerformed(ActionEvent e) {
 				checkPrice(points);
 				use3.setVisible(true);
-				points.setText(String.valueOf(Integer.valueOf(points.getText()) - 500));
 				TestUI.points = Integer.valueOf(points.getText()) - 500;
+				points.setText(String.valueOf(Integer.valueOf(points.getText()) - 500));
 				buy3.setEnabled(false);
 				checkPrice(points);
 				b3IsBought="true";
@@ -156,8 +159,8 @@ public class Shop extends JFrame  {
 		buy4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				use4.setVisible(true);
-				points.setText(String.valueOf(Integer.valueOf(points.getText()) - 1000));
 				TestUI.points = Integer.valueOf(points.getText()) - 1000;
+				points.setText(String.valueOf(Integer.valueOf(points.getText()) - 1000));
 				buy4.setEnabled(false);
 				checkPrice(points);
 				b4IsBought="true";
@@ -186,6 +189,7 @@ public class Shop extends JFrame  {
 				use3.setEnabled(true);
 				use2.setEnabled(true);
 				use1.setEnabled(true);
+				flag1=4;
 			}
 		});
 		use4.setBounds(532, 487, 57, 36);
@@ -200,6 +204,7 @@ public class Shop extends JFrame  {
 				use4.setEnabled(true);
 				use2.setEnabled(true);
 				use1.setEnabled(true);
+				flag1=3;
 			}
 		});
 		use3.setBounds(532, 356, 57, 36);
@@ -214,6 +219,7 @@ public class Shop extends JFrame  {
 				use3.setEnabled(true);
 				use4.setEnabled(true);
 				use1.setEnabled(true);
+				flag1=2;
 			}
 		});
 		use2.setBounds(532, 224, 57, 36);
@@ -228,6 +234,7 @@ public class Shop extends JFrame  {
 				use3.setEnabled(true);
 				use2.setEnabled(true);
 				use4.setEnabled(true);
+				flag1=1;
 			}
 		});
 		use1.setBounds(532, 92, 57, 36);
@@ -271,6 +278,7 @@ public class Shop extends JFrame  {
 		JLabel lblbackground = new JLabel("New label");
 		lblbackground.setBounds(0, 0, 884, 661);
 		getContentPane().add(lblbackground);
+		
 		
 		car1.setIcon(new ImageIcon("pictures\\lambo.png"));
 		car2.setIcon(new ImageIcon("pictures\\lambo2.png"));
