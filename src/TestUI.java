@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import java.awt.Font;
 
 public class TestUI extends JFrame {
 
@@ -40,9 +41,9 @@ public class TestUI extends JFrame {
 	private JButton[] filledHoles = { lblTest, lblTest2, lblTest3, lblTest4,
 			lblTest5, lblTest6, lblTest7, lblTest8, lblTest9, lblTest10};
 	private boolean[] available = { true, true, true, true, true, true, true, true, true, true};
-	// private JButton btnTree1;
-	// private JButton btnTree2;
-	// private JButton btnTree3;
+//	 private JButton btnTree1;
+//	 private JButton btnTree2;
+//	 private JButton btnTree3;
 	public static JButton btnCar;
 
 	public TestUI() {
@@ -53,8 +54,9 @@ public class TestUI extends JFrame {
 
 		life = 50 + Shop.life;
 
-		label = new JLabel();
-		label.setBounds(68, 423, 46, 14);
+		label = new JLabel("");
+		label.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		label.setBounds(781, 43, 63, 35);
 		getContentPane().add(label);
 		
 		declareFilledHoles();
@@ -108,7 +110,7 @@ public class TestUI extends JFrame {
 				// getContentPane().remove(btnTest);
 			}
 		});
-		btnTest2 = new JButton("2");
+		btnTest2 = new JButton();
 		btnTest2.setBounds(513, 0, 100, 100);
 		ImageIcon test2 = new ImageIcon("pictures\\newHole.png");
 		setTransparent(btnTest2);
@@ -146,7 +148,8 @@ public class TestUI extends JFrame {
 		getContentPane().add(lblTest7);
 
 		lblScore = new JLabel("Score : ");
-		lblScore.setBounds(21, 27, 37, 14);
+		lblScore.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblScore.setBounds(681, 43, 90, 32);
 		getContentPane().add(lblScore);
 
 		btnCar = new JButton("");
@@ -162,37 +165,39 @@ public class TestUI extends JFrame {
 		lblNewLabel.setIcon(new ImageIcon("pictures\\realRoad.png"));
 
 		lblHealth2 = new JLabel("Health: ");
-		lblHealth2.setBounds(12, 90, 46, 14);
+		lblHealth2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblHealth2.setBounds(681, 90, 90, 32);
 		getContentPane().add(lblHealth2);
 
 		lblHealth = new JLabel(String.valueOf(life));
-		lblHealth.setBounds(57, 90, 46, 14);
+		lblHealth.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblHealth.setBounds(781, 89, 63, 35);
 		getContentPane().add(lblHealth);
 
-		// btnTree1 = new JButton("New button");
-		// btnTree1.setBounds(692, 63, 139, 105);
-		// btnTree1.setIcon(new ImageIcon("pictures\\tree1.png"));
-		// btnTree1.setOpaque(false);
-		// btnTree1.setContentAreaFilled(false);
-		// btnTree1.setBorderPainted(false);
-		// getContentPane().add(btnTree1);
-		//
-		// btnTree2 = new JButton("New button");
-		// btnTree2.setBounds(692, 245, 139, 105);
-		// btnTree2.setIcon(new ImageIcon("pictures\\tree.png"));
-		// btnTree2.setOpaque(false);
-		// btnTree2.setContentAreaFilled(false);
-		// btnTree2.setBorderPainted(false);
-		// getContentPane().add(btnTree2);
-		//
-		//
-		// btnTree3 = new JButton("New button");
-		// btnTree3.setBounds(692, 430, 139, 105);
-		// btnTree3.setIcon(new ImageIcon("pictures\\tree1.png"));
-		// btnTree3.setOpaque(false);
-		// btnTree3.setContentAreaFilled(false);
-		// btnTree3.setBorderPainted(false);
-		// getContentPane().add(btnTree3);
+//		 btnTree1 = new JButton("New button");
+//		 btnTree1.setBounds(692, 63, 139, 105);
+//		 btnTree1.setIcon(new ImageIcon("pictures\\tree1.png"));
+//		 btnTree1.setOpaque(false);
+//		 btnTree1.setContentAreaFilled(false);
+//		 btnTree1.setBorderPainted(false);
+//		 getContentPane().add(btnTree1);
+//		
+//		 btnTree2 = new JButton("New button");
+//		 btnTree2.setBounds(692, 245, 139, 105);
+//		 btnTree2.setIcon(new ImageIcon("pictures\\tree.png"));
+//		 btnTree2.setOpaque(false);
+//		 btnTree2.setContentAreaFilled(false);
+//		 btnTree2.setBorderPainted(false);
+//		 getContentPane().add(btnTree2);
+//		
+//		
+//		 btnTree3 = new JButton("New button");
+//		 btnTree3.setBounds(692, 430, 139, 105);
+//		 btnTree3.setIcon(new ImageIcon("pictures\\tree1.png"));
+//		 btnTree3.setOpaque(false);
+//		 btnTree3.setContentAreaFilled(false);
+//		 btnTree3.setBorderPainted(false);
+//		 getContentPane().add(btnTree3);
 
 		this.setVisible(false);
 
@@ -268,9 +273,9 @@ public class TestUI extends JFrame {
 				Rectangle l9 = lblTest9.getBounds();
 				Rectangle l10 = lblTest10.getBounds();
 
-				// Rectangle t1 = btnTree1.getBounds();
-				// Rectangle t2 = btnTree2.getBounds();
-				// Rectangle t3 = btnTree3.getBounds();
+//				 Rectangle t1 = btnTree1.getBounds();
+//				 Rectangle t2 = btnTree2.getBounds();
+//				 Rectangle t3 = btnTree3.getBounds();
 
 				r.setLocation((int) r.getX(), (int) r.getY() + move);
 				r2.setLocation((int) r2.getX(), (int) r2.getY() + move);
@@ -287,9 +292,9 @@ public class TestUI extends JFrame {
 				l9.setLocation((int) l9.getX(), (int) l9.getY() + move);
 				l10.setLocation((int) l10.getX(), (int) l10.getY() + move);
 
-				// t1.setLocation((int) t1.getX(), (int) t1.getY() + move);
-				// t2.setLocation((int) t2.getX(), (int) t2.getY() + move);
-				// t3.setLocation((int) t3.getX(), (int) t3.getY() + move);
+//				 t1.setLocation((int) t1.getX(), (int) t1.getY() + move);
+//				 t2.setLocation((int) t2.getX(), (int) t2.getY() + move);
+//				 t3.setLocation((int) t3.getX(), (int) t3.getY() + move);
 
 				btnTest.setBounds(r);
 				btnTest2.setBounds(r2);
@@ -306,9 +311,9 @@ public class TestUI extends JFrame {
 				lblTest9.setBounds(l9);
 				lblTest10.setBounds(l10);
 
-				// btnTree1.setBounds(t1);
-				// btnTree2.setBounds(t2);
-				// btnTree3.setBounds(t3);
+//				 btnTree1.setBounds(t1);
+//				 btnTree2.setBounds(t2);
+//				 btnTree3.setBounds(t3);
 
 				for (int i = 0; i < 10; i++) {
 					if (filledHoles[i].getBounds().intersects(
@@ -319,22 +324,22 @@ public class TestUI extends JFrame {
 
 				}
 
-				// if (btnTree1.getBounds().getY() ==
-				// btnNewButton_9.getBounds().getY()){
-				// btnTree1.setBounds(692, 11, btnTree1.getWidth(),
-				// btnTree1.getHeight());
-				// }
-				// if(btnTree2.getBounds().getY() ==
-				// btnNewButton_9.getBounds().getY()){
-				// btnTree2.setBounds(692, 11, btnTree2.getWidth(),
-				// btnTree2.getHeight());
-				// }
-				//
-				// if(btnTree3.getBounds().getY() ==
-				// btnNewButton_9.getBounds().getY()){
-				// btnTree3.setBounds(692, 11, btnTree3.getWidth(),
-				// btnTree3.getHeight());
-				// }
+//				 if (btnTree1.getBounds().getY() ==
+//				 btnCar.getBounds().getY()){
+//				 btnTree1.setBounds(692, 11, btnTree1.getWidth(),
+//				 btnTree1.getHeight());
+//				 }
+//				 if(btnTree2.getBounds().getY() ==
+//				 btnCar.getBounds().getY()){
+//				 btnTree2.setBounds(692, 11, btnTree2.getWidth(),
+//				 btnTree2.getHeight());
+//				 }
+//				
+//				 if(btnTree3.getBounds().getY() ==
+//				 btnCar.getBounds().getY()){
+//				 btnTree3.setBounds(692, 11, btnTree3.getWidth(),
+//				 btnTree3.getHeight());
+//				 }
 
 				if (btnTest.getBounds().intersects(btnCar.getBounds())) {
 					life -= 10;
@@ -384,7 +389,8 @@ public class TestUI extends JFrame {
 					frameOver.setVisible(true);
 					JOptionPane gameOver = new JOptionPane();
 					gameOver.setLocation(10, 10);
-					JOptionPane.showMessageDialog(gameOver, "Game Over");
+					frameOver.setLocation(200, 300);
+					JOptionPane.showMessageDialog(null, "Game Over");
 					this.cancel();
 
 					setVisible(false);
