@@ -1,5 +1,3 @@
-import java.awt.Color;
-import java.awt.Dialog;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -43,9 +41,6 @@ public class TestUI extends JFrame {
 	private JButton[] filledHoles = { btnFilledHole1, btnFilledHole2, btnFilledHole3, btnFilledHole4,
 			btnFilledHole5, btnFilledHole6, btnFilledHole7, btnFilledHole8, btnFilledHole9, btnFilledHole10};
 	private boolean[] available = { true, true, true, true, true, true, true, true, true, true};
-//	 private JButton btnTree1;
-//	 private JButton btnTree2;
-//	 private JButton btnTree3;
 	public static JButton btnCar;
 
 	public TestUI() {
@@ -68,7 +63,6 @@ public class TestUI extends JFrame {
 		btnHole1.setIcon(test);
 		btnHole1.setBounds(275, 68, 100, 100);
 		setTransparent(btnHole1);
-		// makeNewDirection(btnTest);
 		btnHole1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				for (int i = 0; i < 10; i++) {
@@ -84,8 +78,6 @@ public class TestUI extends JFrame {
 				makeNewDirection(btnHole1, btnHole2, btnHole3);
 				clicks++;
 				labelPoint.setText(String.valueOf(clicks));
-				// getContentPane().remove(btnTest);
-
 			}
 		});
 		
@@ -110,7 +102,6 @@ public class TestUI extends JFrame {
 				makeNewDirection(btnHole2, btnHole1, btnHole3);
 				clicks++;
 				labelPoint.setText(String.valueOf(clicks));
-				// getContentPane().remove(btnTest);
 			}
 		});
 		
@@ -135,7 +126,6 @@ public class TestUI extends JFrame {
 				makeNewDirection(btnHole3, btnHole1, btnHole2);
 				clicks++;
 				labelPoint.setText(String.valueOf(clicks));
-				// getContentPane().remove(btnTest);
 			}
 		});
 
@@ -177,31 +167,6 @@ public class TestUI extends JFrame {
 		lblHealth.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblHealth.setBounds(781, 89, 63, 35);
 		getContentPane().add(lblHealth);
-
-//		 btnTree1 = new JButton("New button");
-//		 btnTree1.setBounds(692, 63, 139, 105);
-//		 btnTree1.setIcon(new ImageIcon("pictures\\tree1.png"));
-//		 btnTree1.setOpaque(false);
-//		 btnTree1.setContentAreaFilled(false);
-//		 btnTree1.setBorderPainted(false);
-//		 getContentPane().add(btnTree1);
-//		
-//		 btnTree2 = new JButton("New button");
-//		 btnTree2.setBounds(692, 245, 139, 105);
-//		 btnTree2.setIcon(new ImageIcon("pictures\\tree.png"));
-//		 btnTree2.setOpaque(false);
-//		 btnTree2.setContentAreaFilled(false);
-//		 btnTree2.setBorderPainted(false);
-//		 getContentPane().add(btnTree2);
-//		
-//		
-//		 btnTree3 = new JButton("New button");
-//		 btnTree3.setBounds(692, 430, 139, 105);
-//		 btnTree3.setIcon(new ImageIcon("pictures\\tree1.png"));
-//		 btnTree3.setOpaque(false);
-//		 btnTree3.setContentAreaFilled(false);
-//		 btnTree3.setBorderPainted(false);
-//		 getContentPane().add(btnTree3);
 
 		this.setVisible(false);
 
@@ -277,10 +242,6 @@ public class TestUI extends JFrame {
 				Rectangle l9 = btnFilledHole9.getBounds();
 				Rectangle l10 = btnFilledHole10.getBounds();
 
-//				 Rectangle t1 = btnTree1.getBounds();
-//				 Rectangle t2 = btnTree2.getBounds();
-//				 Rectangle t3 = btnTree3.getBounds();
-
 				r.setLocation((int) r.getX(), (int) r.getY() + move);
 				r2.setLocation((int) r2.getX(), (int) r2.getY() + move);
 				r3.setLocation((int) r3.getX(), (int) r3.getY() + move);
@@ -295,10 +256,6 @@ public class TestUI extends JFrame {
 				l8.setLocation((int) l8.getX(), (int) l8.getY() + move);
 				l9.setLocation((int) l9.getX(), (int) l9.getY() + move);
 				l10.setLocation((int) l10.getX(), (int) l10.getY() + move);
-
-//				 t1.setLocation((int) t1.getX(), (int) t1.getY() + move);
-//				 t2.setLocation((int) t2.getX(), (int) t2.getY() + move);
-//				 t3.setLocation((int) t3.getX(), (int) t3.getY() + move);
 
 				btnHole1.setBounds(r);
 				btnHole2.setBounds(r2);
@@ -315,10 +272,6 @@ public class TestUI extends JFrame {
 				btnFilledHole9.setBounds(l9);
 				btnFilledHole10.setBounds(l10);
 
-//				 btnTree1.setBounds(t1);
-//				 btnTree2.setBounds(t2);
-//				 btnTree3.setBounds(t3);
-
 				for (int i = 0; i < 10; i++) {
 					if (filledHoles[i].getBounds().intersects(
 							btnCar.getBounds())) {
@@ -327,23 +280,6 @@ public class TestUI extends JFrame {
 					}
 
 				}
-
-//				 if (btnTree1.getBounds().getY() ==
-//				 btnCar.getBounds().getY()){
-//				 btnTree1.setBounds(692, 11, btnTree1.getWidth(),
-//				 btnTree1.getHeight());
-//				 }
-//				 if(btnTree2.getBounds().getY() ==
-//				 btnCar.getBounds().getY()){
-//				 btnTree2.setBounds(692, 11, btnTree2.getWidth(),
-//				 btnTree2.getHeight());
-//				 }
-//				
-//				 if(btnTree3.getBounds().getY() ==
-//				 btnCar.getBounds().getY()){
-//				 btnTree3.setBounds(692, 11, btnTree3.getWidth(),
-//				 btnTree3.getHeight());
-//				 }
 
 				if (btnHole1.getBounds().intersects(btnCar.getBounds())) {
 					life -= 10;
@@ -388,7 +324,6 @@ public class TestUI extends JFrame {
 					points += clicks;
 					MainMenu.saveData();
 
-					// System.exit(0);
 					GameOverFrame frameOver = new GameOverFrame();
 					frameOver.setVisible(true);
 					frameOver.setLocation(200, 300);

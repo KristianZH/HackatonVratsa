@@ -6,11 +6,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
-import java.awt.Color;
 import javax.swing.JLabel;
 
 public class MainMenu extends JFrame {
@@ -81,7 +79,6 @@ public class MainMenu extends JFrame {
 			fr.write("\n");
 			fr.write(Shop.b4IsBought);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -100,10 +97,8 @@ public class MainMenu extends JFrame {
 			Shop.b4IsBought = fr.nextLine();
 
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 
 		} finally {
