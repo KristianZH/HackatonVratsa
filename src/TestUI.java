@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Dialog;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,35 +12,36 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+
 import java.awt.Font;
 
 public class TestUI extends JFrame {
 
-	private JButton btnTest;
-	private JButton btnTest2;
-	private JButton btnTest3;
-	private JLabel label;
+	private JButton btnHole1;
+	private JButton btnHole2;
+	private JButton btnHole3;
+	private JLabel labelPoint;
 	private int move = 2;
 	private int clicks = 0;
 	public static int points = 0;
 	public static int life;
 	private Random rand = new Random();
-	private JLabel lblNewLabel;
+	private JLabel road;
 	private JLabel lblHealth2;
 	private JLabel lblHealth;
 	private JLabel lblScore;
-	private JButton lblTest = new JButton();
-	private JButton lblTest2 = new JButton();
-	private JButton lblTest3 = new JButton();
-	private JButton lblTest4 = new JButton();
-	private JButton lblTest5 = new JButton();
-	private JButton lblTest6 = new JButton();
-	private JButton lblTest7 = new JButton();
-	private JButton lblTest8 = new JButton();
-	private JButton lblTest9 = new JButton();
-	private JButton lblTest10 = new JButton();
-	private JButton[] filledHoles = { lblTest, lblTest2, lblTest3, lblTest4,
-			lblTest5, lblTest6, lblTest7, lblTest8, lblTest9, lblTest10};
+	private JButton btnFilledHole1 = new JButton();
+	private JButton btnFilledHole2 = new JButton();
+	private JButton btnFilledHole3 = new JButton();
+	private JButton btnFilledHole4 = new JButton();
+	private JButton btnFilledHole5 = new JButton();
+	private JButton btnFilledHole6 = new JButton();
+	private JButton btnFilledHole7 = new JButton();
+	private JButton btnFilledHole8 = new JButton();
+	private JButton btnFilledHole9 = new JButton();
+	private JButton btnFilledHole10 = new JButton();
+	private JButton[] filledHoles = { btnFilledHole1, btnFilledHole2, btnFilledHole3, btnFilledHole4,
+			btnFilledHole5, btnFilledHole6, btnFilledHole7, btnFilledHole8, btnFilledHole9, btnFilledHole10};
 	private boolean[] available = { true, true, true, true, true, true, true, true, true, true};
 //	 private JButton btnTree1;
 //	 private JButton btnTree2;
@@ -54,98 +56,100 @@ public class TestUI extends JFrame {
 
 		life = 50 + Shop.life;
 
-		label = new JLabel("");
-		label.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		label.setBounds(781, 43, 63, 35);
-		getContentPane().add(label);
+		labelPoint = new JLabel("0");
+		labelPoint.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		labelPoint.setBounds(781, 43, 63, 35);
+		getContentPane().add(labelPoint);
 		
 		declareFilledHoles();
 
-		btnTest = new JButton();
+		btnHole1 = new JButton();
 		ImageIcon test = new ImageIcon("pictures\\newHole.png");
-		btnTest.setIcon(test);
-		btnTest.setBounds(275, 68, 100, 100);
-		setTransparent(btnTest);
+		btnHole1.setIcon(test);
+		btnHole1.setBounds(275, 68, 100, 100);
+		setTransparent(btnHole1);
 		// makeNewDirection(btnTest);
-		btnTest.addActionListener(new ActionListener() {
+		btnHole1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				for (int i = 0; i < 10; i++) {
 					if (available[i]) {
-						filledHoles[i].setBounds(btnTest.getBounds());
+						filledHoles[i].setBounds(btnHole1.getBounds());
 						filledHoles[i].setVisible(true);
 						available[i] = false;
 						break;
 					}
 				}
-				btnTest.setBounds(rand.nextInt(457) + 124, 11,
-						btnTest.getWidth(), btnTest.getHeight());
-				makeNewDirection(btnTest, btnTest2, btnTest3);
+				btnHole1.setBounds(rand.nextInt(457) + 124, 11,
+						btnHole1.getWidth(), btnHole1.getHeight());
+				makeNewDirection(btnHole1, btnHole2, btnHole3);
 				clicks++;
-				label.setText(String.valueOf(clicks));
+				labelPoint.setText(String.valueOf(clicks));
 				// getContentPane().remove(btnTest);
 
 			}
 		});
-		btnTest3 = new JButton();
-		ImageIcon test3 = new ImageIcon("pictures\\newHole.png");
-		btnTest3.setIcon(test3);
-		btnTest3.setBounds(155, 215, 100, 100);
-		setTransparent(btnTest3);
-		makeNewDirection(btnTest3, btnTest);
-		btnTest3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				for (int i = 0; i < 10; i++) {
-					if (available[i]) {
-						filledHoles[i].setBounds(btnTest3.getBounds());
-						filledHoles[i].setVisible(true);
-						available[i] = false;
-						break;
-					}
-				}
-				btnTest3.setBounds(rand.nextInt(457) + 124, 11,
-						btnTest3.getWidth(), btnTest3.getHeight());
-				makeNewDirection(btnTest3, btnTest, btnTest2);
-				clicks++;
-				label.setText(String.valueOf(clicks));
-				// getContentPane().remove(btnTest);
-			}
-		});
-		btnTest2 = new JButton();
-		btnTest2.setBounds(513, 0, 100, 100);
+		
+		btnHole2 = new JButton();
+		btnHole2.setBounds(513, 0, 100, 100);
 		ImageIcon test2 = new ImageIcon("pictures\\newHole.png");
-		setTransparent(btnTest2);
-		btnTest2.setIcon(test2);
-		makeNewDirection(btnTest2, btnTest, btnTest3);
-		btnTest2.addActionListener(new ActionListener() {
+		setTransparent(btnHole2);
+		btnHole2.setIcon(test2);
+		makeNewDirection(btnHole2, btnHole1);
+		btnHole2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				for (int i = 0; i < 10; i++) {
 					if (available[i]) {
-						filledHoles[i].setBounds(btnTest2.getBounds());
+						filledHoles[i].setBounds(btnHole2.getBounds());
 						filledHoles[i].setVisible(true);
 						available[i] = false;
 						break;
 					}
 				}
-				btnTest2.setBounds(rand.nextInt(457) + 124, 11,
-						btnTest2.getWidth(), btnTest2.getHeight());
-				makeNewDirection(btnTest2, btnTest, btnTest3);
+				btnHole2.setBounds(rand.nextInt(457) + 124, 11,
+						btnHole2.getWidth(), btnHole2.getHeight());
+				makeNewDirection(btnHole2, btnHole1, btnHole3);
 				clicks++;
-				label.setText(String.valueOf(clicks));
+				labelPoint.setText(String.valueOf(clicks));
+				// getContentPane().remove(btnTest);
+			}
+		});
+		
+		btnHole3 = new JButton();
+		ImageIcon test3 = new ImageIcon("pictures\\newHole.png");
+		btnHole3.setIcon(test3);
+		btnHole3.setBounds(155, 215, 100, 100);
+		setTransparent(btnHole3);
+		makeNewDirection(btnHole3, btnHole1, btnHole2);
+		btnHole3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				for (int i = 0; i < 10; i++) {
+					if (available[i]) {
+						filledHoles[i].setBounds(btnHole3.getBounds());
+						filledHoles[i].setVisible(true);
+						available[i] = false;
+						break;
+					}
+				}
+				btnHole3.setBounds(rand.nextInt(457) + 124, 11,
+						btnHole3.getWidth(), btnHole3.getHeight());
+				makeNewDirection(btnHole3, btnHole1, btnHole2);
+				clicks++;
+				labelPoint.setText(String.valueOf(clicks));
 				// getContentPane().remove(btnTest);
 			}
 		});
 
-		getContentPane().add(btnTest2);
-		getContentPane().add(btnTest3);
-		getContentPane().add(btnTest);
+		getContentPane().add(btnHole2);
+		getContentPane().add(btnHole3);
+		getContentPane().add(btnHole1);
 
-		getContentPane().add(lblTest);
-		getContentPane().add(lblTest2);
-		getContentPane().add(lblTest3);
-		getContentPane().add(lblTest4);
-		getContentPane().add(lblTest5);
-		getContentPane().add(lblTest6);
-		getContentPane().add(lblTest7);
+		getContentPane().add(btnFilledHole1);
+		getContentPane().add(btnFilledHole2);
+		getContentPane().add(btnFilledHole3);
+		getContentPane().add(btnFilledHole4);
+		getContentPane().add(btnFilledHole5);
+		getContentPane().add(btnFilledHole6);
+		getContentPane().add(btnFilledHole7);
 
 		lblScore = new JLabel("Score : ");
 		lblScore.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -158,11 +162,11 @@ public class TestUI extends JFrame {
 		setCarIcon();
 		getContentPane().add(btnCar);
 
-		lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(124, 0, 547, 661);
-		getContentPane().add(lblNewLabel);
+		road = new JLabel("New label");
+		road.setBounds(124, 0, 547, 661);
+		getContentPane().add(road);
 
-		lblNewLabel.setIcon(new ImageIcon("pictures\\realRoad.png"));
+		road.setIcon(new ImageIcon("pictures\\realRoad.png"));
 
 		lblHealth2 = new JLabel("Health: ");
 		lblHealth2.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -258,20 +262,20 @@ public class TestUI extends JFrame {
 		movingHoles.schedule(new TimerTask() {
 			@Override
 			public void run() {
-				Rectangle r = btnTest.getBounds();
-				Rectangle r2 = btnTest2.getBounds();
-				Rectangle r3 = btnTest3.getBounds();
+				Rectangle r = btnHole1.getBounds();
+				Rectangle r2 = btnHole2.getBounds();
+				Rectangle r3 = btnHole3.getBounds();
 
-				Rectangle l = lblTest.getBounds();
-				Rectangle l2 = lblTest2.getBounds();
-				Rectangle l3 = lblTest3.getBounds();
-				Rectangle l4 = lblTest4.getBounds();
-				Rectangle l5 = lblTest5.getBounds();
-				Rectangle l6 = lblTest6.getBounds();
-				Rectangle l7 = lblTest7.getBounds();
-				Rectangle l8 = lblTest8.getBounds();
-				Rectangle l9 = lblTest9.getBounds();
-				Rectangle l10 = lblTest10.getBounds();
+				Rectangle l = btnFilledHole1.getBounds();
+				Rectangle l2 = btnFilledHole2.getBounds();
+				Rectangle l3 = btnFilledHole3.getBounds();
+				Rectangle l4 = btnFilledHole4.getBounds();
+				Rectangle l5 = btnFilledHole5.getBounds();
+				Rectangle l6 = btnFilledHole6.getBounds();
+				Rectangle l7 = btnFilledHole7.getBounds();
+				Rectangle l8 = btnFilledHole8.getBounds();
+				Rectangle l9 = btnFilledHole9.getBounds();
+				Rectangle l10 = btnFilledHole10.getBounds();
 
 //				 Rectangle t1 = btnTree1.getBounds();
 //				 Rectangle t2 = btnTree2.getBounds();
@@ -296,20 +300,20 @@ public class TestUI extends JFrame {
 //				 t2.setLocation((int) t2.getX(), (int) t2.getY() + move);
 //				 t3.setLocation((int) t3.getX(), (int) t3.getY() + move);
 
-				btnTest.setBounds(r);
-				btnTest2.setBounds(r2);
-				btnTest3.setBounds(r3);
+				btnHole1.setBounds(r);
+				btnHole2.setBounds(r2);
+				btnHole3.setBounds(r3);
 
-				lblTest.setBounds(l);
-				lblTest2.setBounds(l2);
-				lblTest3.setBounds(l3);
-				lblTest4.setBounds(l4);
-				lblTest5.setBounds(l5);
-				lblTest6.setBounds(l6);
-				lblTest7.setBounds(l7);
-				lblTest8.setBounds(l8);
-				lblTest9.setBounds(l9);
-				lblTest10.setBounds(l10);
+				btnFilledHole1.setBounds(l);
+				btnFilledHole2.setBounds(l2);
+				btnFilledHole3.setBounds(l3);
+				btnFilledHole4.setBounds(l4);
+				btnFilledHole5.setBounds(l5);
+				btnFilledHole6.setBounds(l6);
+				btnFilledHole7.setBounds(l7);
+				btnFilledHole8.setBounds(l8);
+				btnFilledHole9.setBounds(l9);
+				btnFilledHole10.setBounds(l10);
 
 //				 btnTree1.setBounds(t1);
 //				 btnTree2.setBounds(t2);
@@ -341,42 +345,42 @@ public class TestUI extends JFrame {
 //				 btnTree3.getHeight());
 //				 }
 
-				if (btnTest.getBounds().intersects(btnCar.getBounds())) {
+				if (btnHole1.getBounds().intersects(btnCar.getBounds())) {
 					life -= 10;
 					lblHealth.setText(String.valueOf(life));
-					btnTest.setBounds(rand.nextInt(457) + 124, 11,
-							btnTest.getWidth(), btnTest.getHeight());
-					while (btnTest.getBounds().intersects(btnTest2.getBounds())
-							|| btnTest.getBounds().intersects(
-									btnTest3.getBounds())) {
-						btnTest.setBounds(rand.nextInt(457) + 124, 11,
-								btnTest.getWidth(), btnTest.getHeight());
+					btnHole1.setBounds(rand.nextInt(457) + 124, 11,
+							btnHole1.getWidth(), btnHole1.getHeight());
+					while (btnHole1.getBounds().intersects(btnHole2.getBounds())
+							|| btnHole1.getBounds().intersects(
+									btnHole3.getBounds())) {
+						btnHole1.setBounds(rand.nextInt(457) + 124, 11,
+								btnHole1.getWidth(), btnHole1.getHeight());
 					}
-				} else if (btnTest2.getBounds().intersects(
+				} else if (btnHole2.getBounds().intersects(
 						btnCar.getBounds())) {
 					life -= 10;
 					lblHealth.setText(String.valueOf(life));
-					btnTest2.setBounds(rand.nextInt(457) + 124, 11,
-							btnTest2.getWidth(), btnTest2.getHeight());
-					while (btnTest2.getBounds()
-							.intersects(btnTest3.getBounds())
-							|| btnTest2.getBounds().intersects(
-									btnTest.getBounds())) {
-						btnTest2.setBounds(rand.nextInt(457) + 124, 11,
-								btnTest2.getWidth(), btnTest2.getHeight());
+					btnHole2.setBounds(rand.nextInt(457) + 124, 11,
+							btnHole2.getWidth(), btnHole2.getHeight());
+					while (btnHole2.getBounds()
+							.intersects(btnHole3.getBounds())
+							|| btnHole2.getBounds().intersects(
+									btnHole1.getBounds())) {
+						btnHole2.setBounds(rand.nextInt(457) + 124, 11,
+								btnHole2.getWidth(), btnHole2.getHeight());
 					}
-				} else if (btnTest3.getBounds().intersects(
+				} else if (btnHole3.getBounds().intersects(
 						btnCar.getBounds())) {
 					life -= 10;
 					lblHealth.setText(String.valueOf(life));
-					btnTest3.setBounds(rand.nextInt(457) + 124, 11,
-							btnTest3.getWidth(), btnTest3.getHeight());
-					while (btnTest3.getBounds()
-							.intersects(btnTest2.getBounds())
-							|| btnTest3.getBounds().intersects(
-									btnTest.getBounds())) {
-						btnTest3.setBounds(rand.nextInt(457) + 124, 11,
-								btnTest3.getWidth(), btnTest3.getHeight());
+					btnHole3.setBounds(rand.nextInt(457) + 124, 11,
+							btnHole3.getWidth(), btnHole3.getHeight());
+					while (btnHole3.getBounds()
+							.intersects(btnHole2.getBounds())
+							|| btnHole3.getBounds().intersects(
+									btnHole1.getBounds())) {
+						btnHole3.setBounds(rand.nextInt(457) + 124, 11,
+								btnHole3.getWidth(), btnHole3.getHeight());
 					}
 				}
 				btnCar.setText(String.valueOf(life));
@@ -387,8 +391,6 @@ public class TestUI extends JFrame {
 					// System.exit(0);
 					GameOverFrame frameOver = new GameOverFrame();
 					frameOver.setVisible(true);
-					JOptionPane gameOver = new JOptionPane();
-					gameOver.setLocation(10, 10);
 					frameOver.setLocation(200, 300);
 					JOptionPane.showMessageDialog(null, "Game Over");
 					this.cancel();
@@ -399,7 +401,7 @@ public class TestUI extends JFrame {
 				}
 			}
 		}, 1000, 30);
-
+		
 		Timer increaseSpeed = new Timer();
 		increaseSpeed.schedule(new TimerTask() {
 			@Override
