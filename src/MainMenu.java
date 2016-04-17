@@ -13,22 +13,27 @@ import javax.swing.JLabel;
 
 public class MainMenu extends JFrame {
 
-	TestUI playGame;
+	PlayGame playGame;
 	Shop shop;
 
 	public MainMenu() {
 
+		init();
+
+	}
+
+	private void init() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		readData();
 
-		this.playGame = new TestUI();
+		this.playGame = new PlayGame();
 		this.shop = new Shop();
 		getContentPane().setLayout(null);
 		JButton btnNewButton = new JButton("Play");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				playGame = new TestUI();
-				TestUI.life = 50 + Shop.life;
+				playGame = new PlayGame();
+				PlayGame.life = 50 + Shop.life;
 				setVisible(false);
 				playGame.setVisible(true);
 				playGame.play();
@@ -64,12 +69,11 @@ public class MainMenu extends JFrame {
 		this.setLocationRelativeTo(null);
 
 		this.setVisible(true);
-
 	}
 
 	static void saveData() {
 		try (FileWriter fr = new FileWriter(new File("shop"))) {
-			fr.write(String.valueOf(TestUI.points));
+			fr.write(String.valueOf(PlayGame.points));
 			fr.write("\n");
 			fr.write(Shop.b1IsBought);
 			fr.write("\n");
@@ -90,7 +94,7 @@ public class MainMenu extends JFrame {
 
 			fr = new Scanner(f);
 
-			TestUI.points = Integer.valueOf(fr.nextLine());
+			PlayGame.points = Integer.valueOf(fr.nextLine());
 			Shop.b1IsBought = fr.nextLine();
 			Shop.b2IsBought = fr.nextLine();
 			Shop.b3IsBought = fr.nextLine();

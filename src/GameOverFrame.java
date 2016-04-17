@@ -1,13 +1,10 @@
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+public class GameOverFrame extends JFrame {
 
-public class GameOverFrame extends JFrame{
-
-//	public static JFrame frame;
-
+	// public static JFrame frame;
 
 	/**
 	 * Create the application.
@@ -25,13 +22,11 @@ public class GameOverFrame extends JFrame{
 		getContentPane().setLayout(null);
 		setLocationRelativeTo(null);
 
-		
 		JLabel lblNewLabel = new JLabel();
 		lblNewLabel.setBounds(0, 0, 900, 700);
 		lblNewLabel.setIcon(new ImageIcon("pictures\\tito.png"));
 		getContentPane().add(lblNewLabel);
-		
-		
+
 	}
 
 }
