@@ -284,7 +284,7 @@ public class Shop extends JFrame  {
 		car2.setIcon(new ImageIcon("pictures\\lambo2.png"));
 		car3.setIcon(new ImageIcon("pictures\\merc.png"));
 		car4.setIcon(new ImageIcon("pictures\\viper.png"));
-		lblCoins.setIcon(new ImageIcon("pictures\\coins.jpg"));
+		lblCoins.setIcon(new ImageIcon("pictures\\coins2.png"));
 		lblbackground.setIcon(new ImageIcon("pictures\\garage.jpg"));
 		
 		
